@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ToDoViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var todoTextField: UITextField!
@@ -18,16 +19,12 @@ class ToDoViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         todoTextField.text = saveDate.object(forKey: "todo") as? String
-        todoTextField.delegate = self
     }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+ 
     
     @IBAction func add(_ sender: UIButton) {
-        saveDate.object(forKey: "todo")
+        saveDate.set(todoTextField, forKey: "todo")
+        saveDate.synchronize()
     }
     
     @IBAction func `return`(_ sender: UIBarButtonItem) {
