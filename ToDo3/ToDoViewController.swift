@@ -16,7 +16,7 @@ class ToDoViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        todoTextField.text = saveDate.object(forKey: "todo") as? String
+        todoTextField.text = saveDate.object(forKey: "todo") as? [String]
         todoTextField.delegate = self
     }
 
