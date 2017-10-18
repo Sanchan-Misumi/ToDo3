@@ -8,10 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDelegate {
+  
+    
+    var fintName_array:[String] = []
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
