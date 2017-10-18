@@ -16,13 +16,13 @@ class ToDoViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        todoTextField.text = saveDate.object(forKey: "todo") as! String
+        todoTextField.text = saveDate.object(forKey: "todo") as? String
         todoTextField.delegate = self
     }
 
     @IBAction func add(_ sender: UIButton) {
         todoItem.append(todoTextField.text!)
-        saveDate.set(todoTextField.text, forKey: "todo")
+        saveDate.set(todoItem, forKey: "todo")
         saveDate.synchronize()
     }
     
