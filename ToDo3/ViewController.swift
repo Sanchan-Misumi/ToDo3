@@ -9,17 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
-    
+
     @IBOutlet weak var todoItemView: UITableView!
-    var todoItem = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UserDefaults.standard.object(forKey: "todo") != nil {
-            todoItem = (UserDefaults.standard.object(forKey: "todo") as? [String]!)!
             todoItemView.dataSource = self
             todoItemView.delegate = self
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -45,6 +41,9 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     }
 //    テーブル（リスト）を下に引っ張って更新機能を記述します。
     override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.standard.object(forKey: "todo") != nil {
+            todoItem = (UserDefaults.standard.object(forKey: "todo") as? [String]!)!
+        }
         todoItemView.reloadData()
     }
 //UserDefaultsの値が代入されている変数todoItemが保持している文字列の数をカウントします。
