@@ -16,9 +16,14 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         if UserDefaults.standard.object(forKey: "todo") != nil {
-            todoItem = UserDefaults.standard.object(forKey: "todo") as! [String]
+            todoItem = (UserDefaults.standard.object(forKey: "todo") as? [String])!
             todoItemView.dataSource = self
+            todoItemView.delegate = self
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(todoItem[indexPath.row])が選ばれました")
     }
 //cellをEdit(編集)したい場合に使用する関数
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -48,8 +53,5 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         cell?.textLabel?.text = todoItem[indexPath.row]
         return cell!
     }
-    
-
-
 }
 
