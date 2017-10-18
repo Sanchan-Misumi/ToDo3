@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(todoItem[indexPath.row])が選ばれました")
+        
     }
 //cellをEdit(編集)したい場合に使用する関数
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
