@@ -26,6 +26,15 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         print("\(todoItem[indexPath.row])が選ばれました")
         
     }
+    
+
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
+//        if editingStyle == UITableViewCellEditingStyle.Delete{
+//            todoItem.removeAtIndex(indexPath.row)
+//            NSUserDefaults.standardUserDefaults().setObject(todoItem, forKey: "todoList")
+//            todolistTable.reloadData()
+//        }
+    
 //cellをEdit(編集)したい場合に使用する関数
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
