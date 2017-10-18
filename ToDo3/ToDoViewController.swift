@@ -21,26 +21,9 @@ class ToDoViewController: UIViewController,UITextFieldDelegate {
     }
 
     @IBAction func add(_ sender: UIButton) {
-        saveDate.set(todoTextField, forKey: "todo")
+        saveDate.set(todoTextField.text, forKey: "todo")
         saveDate.synchronize()
-        
-        let alert: UIAlertController = UIAlertController(title: "保存", message: "メモの保存が完了しました。", preferredStyle: .alert)
-        
-        alert.addAction(
-            UIAlertAction(
-                title: "OK",
-                style: UIAlertActionStyle.default,
-                handler: { action in
-                    
-                    self.navigationController!.popViewController(animated: true)
-        }
-        )
-        )
-        present(alert, animated: true, completion: nil)
-        
-        
     }
-    
     
     @IBAction func `return`(_ sender: UIBarButtonItem) {
     }
