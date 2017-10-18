@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+var todoItem = [String]()
 
 class ToDoViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var todoTextField: UITextField!
@@ -21,6 +21,7 @@ class ToDoViewController: UIViewController,UITextFieldDelegate {
     }
 
     @IBAction func add(_ sender: UIButton) {
+        todoItem.append(todoTextField.text!)
         saveDate.set(todoTextField.text, forKey: "todo")
         saveDate.synchronize()
     }
