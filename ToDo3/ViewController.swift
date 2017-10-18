@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         if UserDefaults.standard.object(forKey: "todo") != nil {
-            todoItem = (UserDefaults.standard.object(forKey: "todo") as? [String])!
+            todoItem = (UserDefaults.standard.object(forKey: "todo") as? [String]!)!
             todoItemView.dataSource = self
             todoItemView.delegate = self
         }
