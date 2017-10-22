@@ -7,9 +7,9 @@
 //
 
 import UIKit
-var todoItem = [String]()
+
 class ToDoViewController: UIViewController,UITextFieldDelegate {
-   
+   var todoItem = [String]()
 
     @IBOutlet weak var todoTextField: UITextField!
     let saveDate : UserDefaults = UserDefaults.standard

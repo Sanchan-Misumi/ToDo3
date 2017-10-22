@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
-
+var todoItem = [String]()
     @IBOutlet weak var todoItemView: UITableView!
     
     override func viewDidLoad() {

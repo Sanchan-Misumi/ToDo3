@@ -83,7 +83,6 @@
                                 <state key="normal" title="add"/>
                                 <connections>
                                     <action selector="add:" destination="hvN-hh-601" eventType="touchUpInside" id="rRd-mg-KFz"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="j4M-Mg-0R7"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UaZ-ph-TzL">
@@ -94,7 +93,6 @@
                                         <barButtonItem key="rightBarButtonItem" title="return" id="23h-Js-1GU">
                                             <connections>
                                                 <action selector="return:" destination="hvN-hh-601" id="0HL-O5-8Qe"/>
-                                                <segue destination="BYZ-38-t0r" kind="show" id="KDI-rs-Rhx"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -110,10 +108,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCy-Ur-Wzp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="868" y="132.68365817091455"/>
+            <point key="canvasLocation" x="2073" y="133"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="GEC-CM-CDp">
+            <objects>
+                <viewController id="eoR-od-MYL" customClass="EditViewController" customModule="ToDo3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fsq-Oi-K32">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lDy-gE-W68">
+                                <rect key="frame" x="64" y="146" width="247" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdo-rZ-FyC">
+                                <rect key="frame" x="172" y="249" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="edit"/>
+                                <connections>
+                                    <action selector="add:" destination="hvN-hh-601" eventType="touchUpInside" id="KTj-uy-0Oc"/>
+                                    <action selector="edit" destination="eoR-od-MYL" eventType="touchUpInside" id="Bpc-yq-4ne"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jpx-fF-vZS">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="wVo-hS-0n4">
+                                        <barButtonItem key="rightBarButtonItem" title="return" id="9H3-GA-6OV">
+                                            <connections>
+                                                <action selector="return" destination="eoR-od-MYL" id="ej0-4d-dmC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="EYt-wV-Gwz"/>
+                    </view>
+                    <connections>
+                        <outlet property="todotextField" destination="lDy-gE-W68" id="Kow-5v-Pcz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qn6-XC-LxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1124" y="133"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="j4M-Mg-0R7"/>
-    </inferredMetricsTieBreakers>
 </document>
