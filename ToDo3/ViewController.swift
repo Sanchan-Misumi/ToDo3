@@ -9,30 +9,38 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+    //todoItemという変数を、String型の配列とします
 var todoItem = [String]()
-    @IBOutlet weak var todoItemView: UITableView!
-    
+    //todoItemViewをUITableViewとしてstoryboardに置きます
+    @IBOutlet  var todoItemView: UITableView!
+   
+    //最初に立ち上がった時の指示を書きます
     override func viewDidLoad() {
         super.viewDidLoad()
+        //dataSourceは自分自身（textfielに書いた値です？）
             todoItemView.dataSource = self
+        //delegateは自分自身（textfielに書いた値の処理です？）
             todoItemView.delegate = self
+        // Do any additional setup after loading the view, typically from a nib.
+        if UserDefaults.standard.object(forKey: "todo") != nil {
+            todoItem = UserDefaults.standard.object(forKey: "todo") as! [String]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(todoItem[indexPath.row])が選ばれました")
-        
     }
     
 
-//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
-//        if editingStyle == UITableViewCellEditingStyle.Delete{
-//            todoItem.removeAtIndex(indexPath.row)
-//            NSUserDefaults.standardUserDefaults().setObject(todoItem, forKey: "todoList")
-//            todolistTable.reloadData()
-//        }
-    
-//cellをEdit(編集)したい場合に使用する関数
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            todoItem.remove(at: indexPath.row)
+            UserDefaults.standard.set(todoItem, forKey: "todoList")
+            todoListTable.reloadData()
+        }
+//
+//]cellをEdit(編集)したい場合に使用するクラスを書きます
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        saveDate.set(UITableView(), forKey: "todo")
         if editingStyle == UITableViewCellEditingStyle.delete{
             todoItem.remove(at: indexPath.row)
             UserDefaults.standard.set(todoItem, forKey: "todo")
@@ -52,7 +60,7 @@ var todoItem = [String]()
     }
 
         // Do any additional setup after loading the view, typically from a nib.
-    override func didReceiveMemoryWarning() {
+        func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -62,5 +70,7 @@ var todoItem = [String]()
         cell?.textLabel?.text = todoItem[indexPath.row]
         return cell!
     }
+}
+}
 }
 
