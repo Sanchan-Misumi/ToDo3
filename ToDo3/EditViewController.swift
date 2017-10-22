@@ -10,10 +10,13 @@ import UIKit
 
 class EditViewController: UIViewController {
     var todoItem = [String]()
-    @IBOutlet var todotextField: UITextField!
+    @IBOutlet var todoTextField: UITextField!
+    let saveDate : UserDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        todoTextField.text = saveDate.object(forKey: "todo") as? String
+        todoTextField.delegate = self as? UITextFieldDelegate
 
         // Do any additional setup after loading the view.
     }
@@ -23,7 +26,9 @@ class EditViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func edit(){
-        
+        todoItem.append(todoTextField.text!)
+        saveDate.set(todoItem, forKey: "todo")
+        saveDate.synchronize()
     }
 
     @IBAction func `return`(){

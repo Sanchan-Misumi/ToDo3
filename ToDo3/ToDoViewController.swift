@@ -25,9 +25,14 @@ class ToDoViewController: UIViewController,UITextFieldDelegate {
         todoItem.append(todoTextField.text!)
         saveDate.set(todoItem, forKey: "todo")
         saveDate.synchronize()
+        
+        let storyboard: UIStoryboard = self.storyboard!
+        let firstView = storyboard.instantiateViewController(withIdentifier: "first") as! ViewController
+        self.present(firstView, animated: true, completion: nil)
     }
     
     @IBAction func `return`(_ sender: UIBarButtonItem) {
+ 
     }
     
     override func didReceiveMemoryWarning() {
