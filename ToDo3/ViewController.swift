@@ -10,7 +10,22 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     //todoItemという変数を、String型の配列とします
-var todoItem = [String]()
+    var todoItem = [String]()
+     let saveDate : UserDefaults = UserDefaults.standard
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//            print("\(todoItem[indexPath.row])が選ばれました")
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                saveDate.set(UITableView(), forKey: "todo")
+//        if editingStyle == UITableViewCellEditingStyle.delete{
+//            todoItem.remove(at: indexPath.row)
+//            UserDefaults.standard.set(todoItem, forKey: "todo")
+//            todoItemView.reloadData()
+//        }
+    }
+    
     //todoItemViewをUITableViewとしてstoryboardに置きます
     @IBOutlet  var todoItemView: UITableView!
    
@@ -26,29 +41,17 @@ var todoItem = [String]()
             todoItem = UserDefaults.standard.object(forKey: "todo") as! [String]
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(todoItem[indexPath.row])が選ばれました")
-    }
+
     
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
         if editingStyle == UITableViewCellEditingStyle.delete{
             todoItem.remove(at: indexPath.row)
-            UserDefaults.standard.set(todoItem, forKey: "todoList")
-            todoListTable.reloadData()
-        }
-//
-//]cellをEdit(編集)したい場合に使用するクラスを書きます
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        saveDate.set(UITableView(), forKey: "todo")
-        if editingStyle == UITableViewCellEditingStyle.delete{
-            todoItem.remove(at: indexPath.row)
             UserDefaults.standard.set(todoItem, forKey: "todo")
-            todoItemView.reloadData()
         }
-    }
+
 //    テーブル（リスト）を下に引っ張って更新機能を記述します。
-    override func viewDidAppear(_ animated: Bool) {
+        func viewDidAppear(_ animated: Bool) {
         if UserDefaults.standard.object(forKey: "todo") != nil {
             todoItem = (UserDefaults.standard.object(forKey: "todo") as? [String]!)!
         }
