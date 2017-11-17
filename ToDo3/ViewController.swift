@@ -8,21 +8,33 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
-    //todoItemという変数を、String型の配列とします
+class ViewController: UIViewController,UITextFieldDelegate,UITableViewDataSource {
+    
+    //ToDoを入れるための配列
     var todoItem = [String]()
-     let saveDate : UserDefaults = UserDefaults.standard
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//            print("\(todoItem[indexPath.row])が選ばれました")
+        //セルの数をToDoArrayの要素の数にする
+        return todoItem.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                saveDate.set(UITableView(), forKey: "todo")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        return cell!
+    }
+    
+    //todoItemという変数を、String型の配列とします
+     let saveDate : UserDefaults = UserDefaults.standard
+    
+    
+    //セルが何個めのセルか、それぞれのセルにデータを読み込んで入れたい
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)  {
+                cell.text = 
 //        if editingStyle == UITableViewCellEditingStyle.delete{
 //            todoItem.remove(at: indexPath.row)
 //            UserDefaults.standard.set(todoItem, forKey: "todo")
 //            todoItemView.reloadData()
+      
 //        }
     }
     
@@ -35,7 +47,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         //dataSourceは自分自身（textfielに書いた値です？）
             todoItemView.dataSource = self
         //delegateは自分自身（textfielに書いた値の処理です？）
-            todoItemView.delegate = self
+   
         // Do any additional setup after loading the view, typically from a nib.
         if UserDefaults.standard.object(forKey: "todo") != nil {
             todoItem = UserDefaults.standard.object(forKey: "todo") as! [String]

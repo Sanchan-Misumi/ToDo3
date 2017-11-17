@@ -31,8 +31,8 @@ class EditViewController: UIViewController {
         saveDate.synchronize()
     }
 
-    @IBAction func `return`(){
-        
+    @IBAction func back(){
+                self.dismiss(animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation

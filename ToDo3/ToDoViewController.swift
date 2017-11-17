@@ -8,10 +8,23 @@
 
 import UIKit
 
-class ToDoViewController: UIViewController,UITextFieldDelegate {
-   var todoItem = [String]()
-
-    @IBOutlet weak var todoTextField: UITextField!
+class ToDoViewController: UIViewController,UITextFieldDelegate,UITableViewDataSource {
+    
+    //ToDoを入れるための配列
+    var todoItem = [String]()
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //セルの数をToDoArrayの要素の数にする
+        return todoItem.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        return cell!
+    }
+    
+    @IBOutlet var todoTextField: UITextField!
+    
     let saveDate : UserDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
@@ -31,8 +44,8 @@ class ToDoViewController: UIViewController,UITextFieldDelegate {
         self.present(firstView, animated: true, completion: nil)
     }
     
-    @IBAction func `return`(_ sender: UIBarButtonItem) {
- 
+    @IBAction func back(_ sender: UIBarButtonItem) {
+         self.dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
